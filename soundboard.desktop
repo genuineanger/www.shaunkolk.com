@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Soundboard
+Comment=Launch Soundboard Application
+Exec=python3 /home/admin/www.shaunkolk.nl/soundboard.py
+Icon=application-x-executable
+Terminal=false
+Type=Application
+Categories=Utility;Application;
