@@ -7,20 +7,17 @@ from PIL import Image, ImageTk  # For handling background images
 # Initialize pygame mixer for sound playback
 pygame.mixer.init()
 
-# Path to the folder with sound files
-sound_folder = "/home/admin/sounds/"
-sound_files = []
+# Get the directory where the script is located
+current_directory = os.path.dirname(os.path.abspath(__file__))
 
-# Load sound files from the folder
-for file in os.listdir(sound_folder):
-    if file.endswith(".wav") or file.endswith(".mp3"):
-        sound_files.append(file)
+# Find all .mp3 files in the current directory
+sound_files = [file for file in os.listdir(current_directory) if file.endswith(".mp3")]
 
 # Get the first .jpg file in the current directory for the background
 background_image_path = None
-for file in os.listdir("."):
+for file in os.listdir(current_directory):
     if file.endswith(".jpg"):
-        background_image_path = file
+        background_image_path = os.path.join(current_directory, file)
         break
 
 # Create the main window
@@ -40,7 +37,7 @@ if background_image_path:
 
 # Function to play sound
 def play_sound(sound_name):
-    sound_path = os.path.join(sound_folder, sound_name)
+    sound_path = os.path.join(current_directory, sound_name)
     pygame.mixer.Sound(sound_path).play()
 
 # Create buttons for each sound file with black background and red text
